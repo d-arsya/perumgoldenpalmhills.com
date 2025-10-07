@@ -1,0 +1,11 @@
+---
+import Layout from '../layouts/Layout.astro';
+import LandingPage from '../components/LandingPage.jsx';
+
+const title = "MA Tahfizh Nurul Iman Solo - Pesantren Tahfizh Putri Terbaik";
+const description = "Pesantren Tahfizh Putri Nurul Iman adalah lembaga pendidikan Islam yang berfokus pada penghafalan Al-Qur'an 30 juz dengan sanad, serta pengembangan karakter muslimah yang sholihah dan mandiri di Solo, Karanganyar.";
+---
+
+<Layout title={title} description={description}>
+  <LandingPage client:load />
+</Layout>

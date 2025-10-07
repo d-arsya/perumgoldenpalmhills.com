@@ -1,0 +1,44 @@
+---
+import "../styles/global.css";
+import Header from "../components/Header"
+const { title, description } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{title}</title>
+  <meta name="description" content={description}>
+  
+  <!-- SEO Meta Tags -->
+  <meta name="keywords" content="pesantren tahfizh putri, pondok pesantren solo, boarding school islam, tahfizh 30 juz, pesantren karanganyar, madrasah aliyah tahfizh, pendidikan islam putri">
+  <meta name="author" content="MA Tahfizh Nurul Iman">
+  <link rel="canonical" href="https://nuruliman.blogspot.co.id">
+  
+  <!-- Open Graph -->
+  <meta property="og:title" content={title}>
+  <meta property="og:description" content={description}>
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://nuruliman.blogspot.co.id">
+  <meta property="og:image" content="/images/og-image.jpg">
+  
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content={title}>
+  <meta name="twitter:description" content={description}>
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="/favicon.png">
+  
+  <!-- Google Fonts (Optional) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body class="antialiased">
+    <Header />
+  <slot />
+</body>
+</html>
