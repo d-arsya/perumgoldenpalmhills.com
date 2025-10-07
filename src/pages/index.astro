@@ -1,11 +1,119 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import LandingPage from '../components/LandingPage.jsx';
-
-const title = "MA Tahfizh Nurul Iman Solo - Pesantren Tahfizh Putri Terbaik";
-const description = "Pesantren Tahfizh Putri Nurul Iman adalah lembaga pendidikan Islam yang berfokus pada penghafalan Al-Qur'an 30 juz dengan sanad, serta pengembangan karakter muslimah yang sholihah dan mandiri di Solo, Karanganyar.";
+import '../styles/global.css';
+import Hero from '../components/Hero';
+import Feature from '../components/Feature';
+import HouseTypes from '../components/HouseTypes';
+import Specifications from '../components/Spesifications';
+import Stats from '../components/Stats';
+// import ReadyStock from '../components/ReadyStock';
+// import Location from '../components/Location';
+// import Footer from '../components/Footer';
 ---
 
-<Layout title={title} description={description}>
-  <LandingPage client:load />
-</Layout>
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Golden Palm Hills - Cluster Modern Keluarga Muda Indonesia. Hanya 2 Juta All In Langsung Akad!">
+  <title>Golden Palm Hills - Cluster Modern Keluarga Muda Indonesia</title>
+  
+  <!-- Tailwind CSS -->
+  <!-- <script src="https://cdn.tailwindcss.com"></script> -->
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --gold: #D4AF37;
+      --dark-gold: #B8941F;
+      --black: #0A0A0A;
+      --dark-gray: #1A1A1A;
+      --light-gray: #F5F5F5;
+    }
+    
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--black);
+      color: var(--light-gray);
+    }
+    
+    h1, h2, h3, h4, h5, h6 {
+      font-family: 'Playfair Display', serif;
+    }
+    
+    .gold-text {
+      color: var(--gold);
+    }
+    
+    .gold-bg {
+      background-color: var(--gold);
+    }
+    
+    .dark-bg {
+      background-color: var(--dark-gray);
+    }
+    
+    .gold-gradient {
+      background: linear-gradient(135deg, var(--gold) 0%, var(--dark-gold) 100%);
+    }
+    
+    .btn-gold {
+      background: linear-gradient(135deg, var(--gold) 0%, var(--dark-gold) 100%);
+      color: var(--black);
+      font-weight: 600;
+      padding: 1rem 2rem;
+      border-radius: 0.5rem;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+    }
+    
+    .btn-gold:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4);
+    }
+    
+    .section-divider {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+      margin: 4rem 0;
+    }
+    
+    /* Smooth scroll */
+    html {
+      scroll-behavior: smooth;
+    }
+    
+    /* Custom scrollbar */
+    ::-webkit-scrollbar {
+      width: 10px;
+    }
+    
+    ::-webkit-scrollbar-track {
+      background: var(--black);
+    }
+    
+    ::-webkit-scrollbar-thumb {
+      background: var(--gold);
+      border-radius: 5px;
+    }
+    
+    ::-webkit-scrollbar-thumb:hover {
+      background: var(--dark-gold);
+    }
+  </style>
+</head>
+<body>
+  <Hero client:load />
+  <Feature client:load />
+  <HouseTypes client:load />
+  <Specifications client:load />
+  <Stats client:load />
+  <!-- <ReadyStock client:load /> -->
+  <!-- <Location client:load /> -->
+  <!-- <Footer client:load /> -->
+</body>
+</html>
