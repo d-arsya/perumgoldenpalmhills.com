@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState } from "react";
 import {
   Menu,
   X,
@@ -34,7 +34,7 @@ const HeroSection = () => {
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <div className="space-y-6 animate-slideInLeft">
             <div className="inline-block bg-pink-100 text-pink-600 px-4 py-2 rounded-full text-sm font-semibold">
-              🌟 Pendaftaran Santri Baru 2025/2026
+              🌟 Pendaftaran Santri Baru 2026/2027
             </div>
             <h1 className="text-4xl md:text-6xl font-bold text-gray-800 leading-tight">
               Pesantren Tahfizh Putri
@@ -49,7 +49,7 @@ const HeroSection = () => {
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <a
-                href="https://docs.google.com/forms"
+                href="https://bit.ly/FORMULIRSPMBNUIM2026"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="bg-gradient-to-r from-pink-500 to-pink-600 text-white px-8 py-4 rounded-full font-semibold hover:shadow-xl transition-all flex items-center justify-center space-x-2"
@@ -58,7 +58,7 @@ const HeroSection = () => {
                 <ChevronRight size={20} />
               </a>
               <a
-                href="https://docs.google.com/forms"
+                href="https://bit.ly/ppdbmtsnuruliman2026-2027"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="bg-gradient-to-r from-blue-500 to-blue-600 text-white px-8 py-4 rounded-full font-semibold hover:shadow-xl transition-all flex items-center justify-center space-x-2"
@@ -68,7 +68,7 @@ const HeroSection = () => {
               </a>
             </div>
             <a
-              href="/brosur-nurul-iman.pdf"
+              href="/Brosur PPTQ Nurul Iman.pdf"
               download
               className="inline-flex items-center space-x-2 text-pink-500 hover:text-pink-600 font-medium"
             >
@@ -79,7 +79,7 @@ const HeroSection = () => {
           <div className="relative animate-slideInRight">
             <div className="aspect-square bg-gradient-to-br from-pink-200 to-blue-200 rounded-3xl overflow-hidden shadow-2xl">
               <img
-                src="https://images.unsplash.com/photo-1604936708679-4c8d6c36e3b0?w=800"
+                src="/hero.webp"
                 alt="Gedung MA Tahfizh Nurul Iman"
                 className="w-full h-full object-cover"
               />
@@ -298,7 +298,7 @@ const VideoSection = () => {
           <div className="relative aspect-video bg-gray-200 rounded-2xl overflow-hidden shadow-2xl">
             <iframe
               className="w-full h-full"
-              src="https://www.youtube.com/embed/dQw4w9WgXcQ"
+              src="https://www.youtube.com/embed/qW4KXL7ejo4"
               title="Profile MA Tahfizh Nurul Iman"
               frameBorder="0"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -526,7 +526,7 @@ const CTASection = () => {
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
           <a
-            href="https://docs.google.com/forms"
+            href="https://bit.ly/FORMULIRSPMBNUIM2026"
             target="_blank"
             rel="noopener noreferrer"
             className="bg-white text-pink-500 px-8 py-4 rounded-full font-bold text-lg hover:shadow-2xl transition-all inline-flex items-center justify-center space-x-2"
@@ -535,7 +535,7 @@ const CTASection = () => {
             <ChevronRight size={24} />
           </a>
           <a
-            href="https://docs.google.com/forms"
+            href="https://bit.ly/ppdbmtsnuruliman2026-2027"
             target="_blank"
             rel="noopener noreferrer"
             className="bg-white text-blue-500 px-8 py-4 rounded-full font-bold text-lg hover:shadow-2xl transition-all inline-flex items-center justify-center space-x-2"
@@ -629,167 +629,8 @@ const ContactSection = () => {
 };
 
 // Footer
-const Footer = () => {
-  return (
-    <footer className="bg-gray-900 text-white py-12">
-      <div className="container mx-auto px-4">
-        <div className="grid md:grid-cols-4 gap-8 mb-8">
-          <div>
-            <div className="flex items-center space-x-3 mb-4">
-              <div className="w-12 h-12 bg-gradient-to-br from-pink-500 to-blue-500 rounded-full flex items-center justify-center">
-                <span className="text-white font-bold text-xl">N</span>
-              </div>
-              <div>
-                <h3 className="font-bold text-lg">MA Tahfizh Nurul Iman</h3>
-                <p className="text-sm text-gray-400">Jaya dengan Al-Qur'an</p>
-              </div>
-            </div>
-            <p className="text-gray-400 text-sm">
-              Lembaga pendidikan Islam yang berfokus pada penghafalan Al-Qur'an
-              dengan sanad.
-            </p>
-          </div>
-
-          <div>
-            <h4 className="font-bold mb-4">Menu Cepat</h4>
-            <ul className="space-y-2 text-gray-400">
-              <li>
-                <a
-                  href="#home"
-                  className="hover:text-pink-400 transition-colors"
-                >
-                  Beranda
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#about"
-                  className="hover:text-pink-400 transition-colors"
-                >
-                  Tentang
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#program"
-                  className="hover:text-pink-400 transition-colors"
-                >
-                  Program
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#prestasi"
-                  className="hover:text-pink-400 transition-colors"
-                >
-                  Prestasi
-                </a>
-              </li>
-            </ul>
-          </div>
-
-          <div>
-            <h4 className="font-bold mb-4">Informasi</h4>
-            <ul className="space-y-2 text-gray-400">
-              <li>
-                <a
-                  href="/fasilitas"
-                  className="hover:text-pink-400 transition-colors"
-                >
-                  Fasilitas
-                </a>
-              </li>
-              <li>
-                <a
-                  href="/ekstrakurikuler"
-                  className="hover:text-pink-400 transition-colors"
-                >
-                  Ekstrakurikuler
-                </a>
-              </li>
-              <li>
-                <a
-                  href="/kegiatan"
-                  className="hover:text-pink-400 transition-colors"
-                >
-                  Kegiatan
-                </a>
-              </li>
-              <li>
-                <a
-                  href="/pendaftaran"
-                  className="hover:text-pink-400 transition-colors"
-                >
-                  Pendaftaran
-                </a>
-              </li>
-            </ul>
-          </div>
-
-          <div>
-            <h4 className="font-bold mb-4">Ikuti Kami</h4>
-            <div className="flex space-x-4">
-              <a
-                href="https://facebook.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="bg-gray-800 p-3 rounded-full hover:bg-pink-500 transition-colors"
-              >
-                <Facebook size={20} />
-              </a>
-              <a
-                href="https://instagram.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="bg-gray-800 p-3 rounded-full hover:bg-pink-500 transition-colors"
-              >
-                <Instagram size={20} />
-              </a>
-              <a
-                href="https://youtube.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="bg-gray-800 p-3 rounded-full hover:bg-pink-500 transition-colors"
-              >
-                <Youtube size={20} />
-              </a>
-            </div>
-            <div className="mt-6">
-              <a
-                href="/brosur-nurul-iman.pdf"
-                download
-                className="inline-flex items-center space-x-2 bg-gradient-to-r from-pink-500 to-blue-500 px-4 py-2 rounded-full text-sm font-semibold hover:shadow-lg transition-all"
-              >
-                <Download size={16} />
-                <span>Download Brosur</span>
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <div className="border-t border-gray-800 pt-8 text-center text-gray-400 text-sm">
-          <p>&copy; 2025 MA Tahfizh Nurul Iman. All rights reserved.</p>
-          <p className="mt-2">Yayasan Al Kahfi Hidayatullah Surakarta</p>
-        </div>
-      </div>
-    </footer>
-  );
-};
 
 // WhatsApp Floating Button
-const WhatsAppButton = () => {
-  return (
-    <a
-      href="https://wa.me/6285848347795"
-      target="_blank"
-      rel="noopener noreferrer"
-      className="fixed bottom-6 right-6 bg-green-500 text-white p-4 rounded-full shadow-2xl hover:bg-green-600 transition-all hover:scale-110 z-50 animate-bounce"
-      aria-label="Chat WhatsApp"
-    >
-      <Phone size={28} />
-    </a>
-  );
-};
 
 // Main App Component
 const App = () => {
@@ -853,8 +694,6 @@ const App = () => {
       <TestimonialSection />
       <CTASection />
       <ContactSection />
-      <Footer />
-      <WhatsAppButton />
     </div>
   );
 };

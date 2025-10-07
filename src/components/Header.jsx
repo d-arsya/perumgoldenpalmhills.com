@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Menu } from "lucide-react";
+import { Menu, X } from "lucide-react";
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
@@ -29,8 +29,9 @@ export default function Header() {
         <nav className="flex items-center justify-between py-4">
           {/* Logo */}
           <div className="flex items-center space-x-3">
-            <div className="w-12 h-12 bg-gradient-to-br from-pink-500 to-blue-500 rounded-full flex items-center justify-center">
-              <span className="text-white font-bold text-xl">N</span>
+            <div className="w-12 h-12">
+              {/* <span className="text-white font-bold text-xl">N</span> */}
+              <img src="/logo.png" alt="" />
             </div>
             <div>
               <h1 className="font-bold text-lg text-gray-800">
