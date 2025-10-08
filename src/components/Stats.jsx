@@ -53,16 +53,21 @@ const Stats = () => {
           setIsVisible(true);
         }
       },
-      { threshold: 0.3 }
+      {
+        threshold: 0.1, // Lebih rendah untuk mobile
+        rootMargin: "0px 0px -50px 0px", // Trigger lebih awal
+      }
     );
 
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
+    const currentRef = sectionRef.current;
+
+    if (currentRef) {
+      observer.observe(currentRef);
     }
 
     return () => {
-      if (sectionRef.current) {
-        observer.unobserve(sectionRef.current);
+      if (currentRef) {
+        observer.unobserve(currentRef);
       }
     };
   }, [isVisible]);
@@ -73,6 +78,8 @@ const Stats = () => {
     const duration = 2000;
     const steps = 60;
     const interval = duration / steps;
+
+    const timers = [];
 
     stats.forEach((stat, index) => {
       let currentCount = 0;
@@ -90,7 +97,13 @@ const Stats = () => {
           [key]: Math.floor(currentCount),
         }));
       }, interval);
+
+      timers.push(timer);
     });
+
+    return () => {
+      timers.forEach((timer) => clearInterval(timer));
+    };
   }, [isVisible]);
 
   return (
