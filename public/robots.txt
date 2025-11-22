@@ -1,4 +1,40 @@
+# robots.txt for Golden Palm Hills
+
 User-agent: *
 Allow: /
 
+# Sitemap location
 Sitemap: https://perumgoldenpalmhills.com/sitemap-index.xml
+Sitemap: https://perumgoldenpalmhills.com/sitemap-0.xml
+
+# Crawl delay (optional - adjust if needed)
+Crawl-delay: 1
+
+# Specific bot rules
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 0
+
+User-agent: Googlebot-Image
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 1
+
+# Block bad bots
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: SemrushBot
+Crawl-delay: 5
+
+# Social media crawlers
+User-agent: facebookexternalhit
+Allow: /
+
+User-agent: Twitterbot
+Allow: /
+
+User-agent: WhatsApp
+Allow: /
