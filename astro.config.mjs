@@ -10,5 +10,8 @@ export default defineConfig({
   vite: {
     plugins: [tailwindcss()],
   },
-  integrations: [react(), sitemap()],
+  integrations: [
+    react(),
+    sitemap({ customPages: ["https://perumgoldenpalmhills.com"] }),
+  ],
 });
