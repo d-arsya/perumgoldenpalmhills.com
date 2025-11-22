@@ -38,16 +38,16 @@ const Location = () => {
   ];
 
   return (
-    <section className="py-20 bg-black">
+    <section className="py-20 bg-gradient-to-br from-orange-50 to-amber-50">
       <div className="container mx-auto px-6">
         {/* Section Header */}
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
-            <span className="text-white">Lokasi</span>
+            <span className="text-gray-900">Lokasi</span>
             <span className="gold-text"> Strategis</span>
           </h2>
           <div className="w-24 h-1 bg-gradient-to-r from-yellow-400 to-yellow-600 mx-auto mb-6"></div>
-          <p className="text-xl text-gray-400 max-w-2xl mx-auto">
+          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
             Berada di lokasi premium dengan akses mudah ke berbagai fasilitas
             penting
           </p>
@@ -57,12 +57,11 @@ const Location = () => {
           {/* Map & Address */}
           <div>
             {/* Google Maps Placeholder */}
-            <div className="bg-zinc-800 rounded-2xl overflow-hidden border border-yellow-400/30 mb-6">
+            <div className="bg-white rounded-2xl overflow-hidden border-2 border-yellow-300 mb-6 shadow-lg">
               <div className="relative h-96">
-                {/* Placeholder for Google Maps */}
                 <iframe
                   title="Golden Palm Hills Location"
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d126748.56211395127!2d107.15009529726562!3d-6.335204399999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e6995b2b4b3e3d3%3A0x1234567890abcdef!2sCikarang%20Selatan%2C%20Bekasi%20Regency%2C%20West%20Java!5e0!3m2!1sen!2sid!4v1234567890123!5m2!1sen!2sid"
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3851.6549486379913!2d107.09908177485606!3d-6.36263669362743!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e699b046d0e97f1%3A0xb14e904ca5c0da46!2sNew%20Golden%20Palm%20Hills!5e1!3m2!1sid!2sid!4v1763831560153!5m2!1sid!2sid"
                   width="100%"
                   height="100%"
                   style={{ border: 0 }}
@@ -75,16 +74,16 @@ const Location = () => {
             </div>
 
             {/* Address Card */}
-            <div className="bg-gradient-to-br from-zinc-800 to-zinc-900 border border-yellow-400/30 rounded-2xl p-6">
+            <div className="bg-white border-2 border-yellow-200 rounded-2xl p-6 shadow-lg">
               <div className="flex items-start gap-4 mb-6">
-                <div className="w-12 h-12 bg-gradient-to-br from-yellow-400 to-yellow-600 rounded-xl flex items-center justify-center text-2xl flex-shrink-0">
+                <div className="w-12 h-12 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-xl flex items-center justify-center text-2xl flex-shrink-0 shadow-md">
                   📍
                 </div>
                 <div>
-                  <h3 className="text-xl font-bold text-white mb-2">
+                  <h3 className="text-xl font-bold text-gray-900 mb-2">
                     Alamat Lengkap
                   </h3>
-                  <p className="text-gray-300 leading-relaxed">
+                  <p className="text-gray-700 leading-relaxed">
                     Jl Raya Setu Serang, Sukadami
                     <br />
                     Cikarang Selatan, Bekasi
@@ -96,21 +95,21 @@ const Location = () => {
 
               {/* Nearby Places */}
               <div>
-                <h4 className="text-yellow-400 font-semibold mb-4">
+                <h4 className="text-yellow-600 font-semibold mb-4">
                   Dekat dengan:
                 </h4>
                 <div className="grid grid-cols-2 gap-3">
                   {nearbyPlaces.map((place, index) => (
                     <div
                       key={index}
-                      className="flex items-center gap-2 bg-zinc-700/50 rounded-lg p-3"
+                      className="flex items-center gap-2 bg-orange-50 border border-yellow-200 rounded-lg p-3 hover:border-yellow-400 transition-colors"
                     >
                       <span className="text-2xl">{place.icon}</span>
                       <div>
-                        <p className="text-white text-sm font-medium">
+                        <p className="text-gray-900 text-sm font-medium">
                           {place.name}
                         </p>
-                        <p className="text-yellow-400 text-xs">
+                        <p className="text-yellow-600 text-xs">
                           {place.distance}
                         </p>
                       </div>
@@ -124,8 +123,8 @@ const Location = () => {
           {/* Contact Form & Info */}
           <div>
             {/* Contact Numbers */}
-            <div className="bg-gradient-to-br from-zinc-800 to-zinc-900 border border-yellow-400/30 rounded-2xl p-6 mb-6">
-              <h3 className="text-2xl font-bold text-white mb-4">
+            <div className="bg-white border-2 border-yellow-200 rounded-2xl p-6 mb-6 shadow-lg">
+              <h3 className="text-2xl font-bold text-gray-900 mb-4">
                 Hubungi Kami
               </h3>
               <div className="space-y-3">
@@ -135,10 +134,10 @@ const Location = () => {
                     href={`https://wa.me/${contact.number}`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center justify-between bg-zinc-700/50 hover:bg-zinc-700 rounded-xl p-4 transition-all duration-300 group"
+                    className="flex items-center justify-between bg-orange-50 hover:bg-orange-100 border border-yellow-200 hover:border-yellow-400 rounded-xl p-4 transition-all duration-300 group"
                   >
                     <div className="flex items-center gap-3">
-                      <div className="w-12 h-12 bg-gradient-to-br from-green-400 to-green-600 rounded-xl flex items-center justify-center">
+                      <div className="w-12 h-12 bg-gradient-to-br from-green-400 to-green-600 rounded-xl flex items-center justify-center shadow-md">
                         <svg
                           className="w-6 h-6 text-white"
                           fill="currentColor"
@@ -148,14 +147,14 @@ const Location = () => {
                         </svg>
                       </div>
                       <div>
-                        <p className="text-gray-400 text-sm">{contact.label}</p>
-                        <p className="text-white font-semibold">
+                        <p className="text-gray-600 text-sm">{contact.label}</p>
+                        <p className="text-gray-900 font-semibold">
                           +{contact.number}
                         </p>
                       </div>
                     </div>
                     <svg
-                      className="w-6 h-6 text-yellow-400 transform group-hover:translate-x-1 transition-transform"
+                      className="w-6 h-6 text-yellow-600 transform group-hover:translate-x-1 transition-transform"
                       fill="none"
                       stroke="currentColor"
                       viewBox="0 0 24 24"
@@ -173,13 +172,13 @@ const Location = () => {
             </div>
 
             {/* Contact Form */}
-            <div className="bg-gradient-to-br from-zinc-800 to-zinc-900 border border-yellow-400/30 rounded-2xl p-6">
-              <h3 className="text-2xl font-bold text-white mb-4">
+            <div className="bg-white border-2 border-yellow-200 rounded-2xl p-6 shadow-lg">
+              <h3 className="text-2xl font-bold text-gray-900 mb-4">
                 Kirim Pesan
               </h3>
               <form onSubmit={handleSubmit} className="space-y-4">
                 <div>
-                  <label className="block text-gray-300 text-sm font-semibold mb-2">
+                  <label className="block text-gray-700 text-sm font-semibold mb-2">
                     Nama Lengkap
                   </label>
                   <input
@@ -188,12 +187,12 @@ const Location = () => {
                     value={formData.name}
                     onChange={handleChange}
                     required
-                    className="w-full bg-zinc-700 border border-yellow-400/30 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-yellow-400 transition-colors"
+                    className="w-full bg-orange-50 border-2 border-yellow-200 rounded-lg px-4 py-3 text-gray-900 focus:outline-none focus:border-yellow-400 transition-colors"
                     placeholder="Masukkan nama Anda"
                   />
                 </div>
                 <div>
-                  <label className="block text-gray-300 text-sm font-semibold mb-2">
+                  <label className="block text-gray-700 text-sm font-semibold mb-2">
                     Nomor WhatsApp
                   </label>
                   <input
@@ -202,12 +201,12 @@ const Location = () => {
                     value={formData.phone}
                     onChange={handleChange}
                     required
-                    className="w-full bg-zinc-700 border border-yellow-400/30 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-yellow-400 transition-colors"
+                    className="w-full bg-orange-50 border-2 border-yellow-200 rounded-lg px-4 py-3 text-gray-900 focus:outline-none focus:border-yellow-400 transition-colors"
                     placeholder="08xx xxxx xxxx"
                   />
                 </div>
                 <div>
-                  <label className="block text-gray-300 text-sm font-semibold mb-2">
+                  <label className="block text-gray-700 text-sm font-semibold mb-2">
                     Pesan
                   </label>
                   <textarea
@@ -216,7 +215,7 @@ const Location = () => {
                     onChange={handleChange}
                     required
                     rows="4"
-                    className="w-full bg-zinc-700 border border-yellow-400/30 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-yellow-400 transition-colors resize-none"
+                    className="w-full bg-orange-50 border-2 border-yellow-200 rounded-lg px-4 py-3 text-gray-900 focus:outline-none focus:border-yellow-400 transition-colors resize-none"
                     placeholder="Saya tertarik dengan Golden Palm Hills..."
                   ></textarea>
                 </div>

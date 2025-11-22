@@ -1,6 +1,9 @@
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 const Features = () => {
+  const [visibleCards, setVisibleCards] = useState([]);
+  const sectionRef = useRef(null);
+
   const features = [
     {
       icon: "🏘️",
@@ -60,17 +63,52 @@ const Features = () => {
     },
   ];
 
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const cards = entry.target.querySelectorAll(".feature-card");
+            cards.forEach((card, index) => {
+              setTimeout(() => {
+                setVisibleCards((prev) => [...prev, index]);
+              }, index * 100);
+            });
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => {
+      if (sectionRef.current) {
+        observer.unobserve(sectionRef.current);
+      }
+    };
+  }, []);
+
   return (
-    <section className="py-20 bg-gradient-to-b from-black to-zinc-900">
-      <div className="container mx-auto px-6">
+    <section
+      ref={sectionRef}
+      className="py-20 bg-gradient-to-b from-white to-orange-50 relative overflow-hidden"
+    >
+      {/* Floating Background Elements */}
+      <div className="absolute top-20 right-10 w-64 h-64 bg-yellow-200 rounded-full mix-blend-multiply filter blur-xl opacity-10 animate-float"></div>
+      <div className="absolute bottom-20 left-10 w-64 h-64 bg-orange-200 rounded-full mix-blend-multiply filter blur-xl opacity-10 animate-float-delayed"></div>
+
+      <div className="container mx-auto px-6 relative z-10">
         {/* Section Header */}
-        <div className="text-center mb-16">
+        <div className="text-center mb-16 animate-fade-in-up">
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
-            <span className="text-white">Keunggulan</span>
+            <span className="text-gray-900">Keunggulan</span>
             <span className="gold-text"> Golden Palm Hills</span>
           </h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-yellow-400 to-yellow-600 mx-auto mb-6"></div>
-          <p className="text-xl text-gray-400 max-w-3xl mx-auto">
+          <div className="w-24 h-1 bg-gradient-to-r from-yellow-400 to-yellow-600 mx-auto mb-6 animate-scale-x"></div>
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
             Rumah komersil dengan harga grosir yang menawarkan berbagai
             keunggulan untuk kenyamanan dan investasi masa depan Anda
           </p>
@@ -81,41 +119,125 @@ const Features = () => {
           {features.map((feature, index) => (
             <div
               key={index}
-              className="group relative bg-zinc-800/50 backdrop-blur-sm border border-yellow-400/20 rounded-2xl p-8 hover:border-yellow-400 transition-all duration-500 hover:transform hover:-translate-y-2 hover:shadow-2xl hover:shadow-yellow-400/20"
+              className={`feature-card group relative bg-white backdrop-blur-sm border-2 border-yellow-200 rounded-2xl p-8 hover:border-yellow-400 transition-all duration-500 hover:transform hover:-translate-y-2 hover:shadow-xl hover:shadow-yellow-300/30 ${
+                visibleCards.includes(index)
+                  ? "opacity-100 translate-y-0"
+                  : "opacity-0 translate-y-10"
+              }`}
+              style={{
+                transition: "all 0.6s ease-out",
+                transitionDelay: `${index * 0.1}s`,
+              }}
             >
               {/* Icon with Gradient Background */}
               <div
-                className={`w-20 h-20 bg-gradient-to-br ${feature.color} rounded-2xl flex items-center justify-center mb-6 text-4xl transform group-hover:rotate-12 transition-transform duration-300`}
+                className={`w-20 h-20 bg-gradient-to-br ${feature.color} rounded-2xl flex items-center justify-center mb-6 text-4xl transform group-hover:rotate-12 group-hover:scale-110 transition-all duration-300 shadow-lg relative`}
               >
-                {feature.icon}
+                <span className="relative z-10">{feature.icon}</span>
+                <div className="absolute inset-0 bg-white opacity-0 group-hover:opacity-20 rounded-2xl transition-opacity duration-300"></div>
               </div>
 
               {/* Content */}
-              <h3 className="text-2xl font-bold text-white mb-3 group-hover:text-yellow-400 transition-colors duration-300">
+              <h3 className="text-2xl font-bold text-gray-900 mb-3 group-hover:text-yellow-600 transition-colors duration-300">
                 {feature.title}
               </h3>
-              <p className="text-gray-400 leading-relaxed">
+              <p className="text-gray-600 leading-relaxed">
                 {feature.description}
               </p>
 
               {/* Decorative Corner */}
               <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-br from-yellow-400/10 to-transparent rounded-bl-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+
+              {/* Shine Effect */}
+              <div className="absolute inset-0 rounded-2xl overflow-hidden">
+                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white to-transparent opacity-0 group-hover:opacity-30 transform -translate-x-full group-hover:translate-x-full transition-all duration-1000"></div>
+              </div>
             </div>
           ))}
         </div>
 
         {/* Bottom CTA */}
-        <div className="text-center mt-16">
-          <div className="inline-block bg-gradient-to-r from-yellow-400/10 to-yellow-600/10 border border-yellow-400/30 rounded-2xl p-8">
-            <h3 className="text-2xl md:text-3xl font-bold text-white mb-4">
+        <div className="text-center mt-16 animate-fade-in-up animation-delay-800">
+          <div className="inline-block bg-gradient-to-r from-yellow-50 to-orange-50 border-2 border-yellow-300 rounded-2xl p-8 shadow-lg transform hover:scale-105 transition-transform duration-300">
+            <h3 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4">
               Rumah Komersil Harga Grosir
             </h3>
-            <p className="text-xl text-yellow-400 font-semibold">
+            <p className="text-xl text-yellow-600 font-semibold animate-pulse">
               ✅ Alhamdulillah Aman Dari Banjir
             </p>
           </div>
         </div>
       </div>
+
+      <style jsx>{`
+        @keyframes float {
+          0%,
+          100% {
+            transform: translateY(0px) translateX(0px);
+          }
+          33% {
+            transform: translateY(-20px) translateX(10px);
+          }
+          66% {
+            transform: translateY(20px) translateX(-10px);
+          }
+        }
+
+        @keyframes float-delayed {
+          0%,
+          100% {
+            transform: translateY(0px) translateX(0px);
+          }
+          33% {
+            transform: translateY(20px) translateX(-10px);
+          }
+          66% {
+            transform: translateY(-20px) translateX(10px);
+          }
+        }
+
+        @keyframes scale-x {
+          from {
+            transform: scaleX(0);
+          }
+          to {
+            transform: scaleX(1);
+          }
+        }
+
+        @keyframes fade-in-up {
+          from {
+            opacity: 0;
+            transform: translateY(30px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+
+        .animate-float {
+          animation: float 8s ease-in-out infinite;
+        }
+
+        .animate-float-delayed {
+          animation: float-delayed 8s ease-in-out infinite;
+        }
+
+        .animate-scale-x {
+          animation: scale-x 1s ease-out forwards;
+          transform-origin: left;
+        }
+
+        .animate-fade-in-up {
+          animation: fade-in-up 0.8s ease-out forwards;
+        }
+
+        .animation-delay-800 {
+          animation-delay: 0.8s;
+          opacity: 0;
+        }
+      `}</style>
     </section>
   );
 };

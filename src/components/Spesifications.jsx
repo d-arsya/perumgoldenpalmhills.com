@@ -59,16 +59,16 @@ const Specifications = () => {
   ];
 
   return (
-    <section className="py-20 bg-gradient-to-b from-black to-zinc-900">
+    <section className="py-20 bg-gradient-to-b from-white to-orange-50">
       <div className="container mx-auto px-6">
         {/* Section Header */}
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
-            <span className="text-white">Spesifikasi</span>
+            <span className="text-gray-900">Spesifikasi</span>
             <span className="gold-text"> Bangunan</span>
           </h2>
           <div className="w-24 h-1 bg-gradient-to-r from-yellow-400 to-yellow-600 mx-auto mb-6"></div>
-          <p className="text-xl text-gray-400 max-w-3xl mx-auto">
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
             Dibangun dengan material berkualitas tinggi dan standar konstruksi
             modern untuk hunian yang nyaman dan tahan lama
           </p>
@@ -80,25 +80,25 @@ const Specifications = () => {
             {specifications.map((spec, index) => (
               <div
                 key={index}
-                className="group bg-zinc-800/50 backdrop-blur-sm border border-yellow-400/20 rounded-2xl p-6 hover:border-yellow-400 hover:bg-zinc-800/80 transition-all duration-300 hover:transform hover:-translate-y-1 hover:shadow-xl hover:shadow-yellow-400/10"
+                className="group bg-white backdrop-blur-sm border-2 border-yellow-200 rounded-2xl p-6 hover:border-yellow-400 hover:bg-orange-50/50 transition-all duration-300 hover:transform hover:-translate-y-1 hover:shadow-xl hover:shadow-yellow-300/20"
               >
                 {/* Icon */}
                 <div className="flex items-start gap-4 mb-3">
-                  <div className="w-14 h-14 bg-gradient-to-br from-yellow-400 to-yellow-600 rounded-xl flex items-center justify-center text-3xl flex-shrink-0 transform group-hover:scale-110 transition-transform duration-300">
+                  <div className="w-14 h-14 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-xl flex items-center justify-center text-3xl flex-shrink-0 transform group-hover:scale-110 transition-transform duration-300 shadow-md">
                     {spec.icon}
                   </div>
                   <div className="flex-1">
-                    <h3 className="text-yellow-400 font-bold text-lg mb-1">
+                    <h3 className="text-yellow-600 font-bold text-lg mb-1">
                       {spec.label}
                     </h3>
-                    <p className="text-white font-semibold text-base">
+                    <p className="text-gray-900 font-semibold text-base">
                       {spec.value}
                     </p>
                   </div>
                 </div>
 
                 {/* Description */}
-                <p className="text-gray-400 text-sm leading-relaxed pl-[72px]">
+                <p className="text-gray-600 text-sm leading-relaxed pl-[72px]">
                   {spec.description}
                 </p>
               </div>
@@ -107,32 +107,32 @@ const Specifications = () => {
 
           {/* Quality Assurance Badge */}
           <div className="mt-16 text-center">
-            <div className="inline-block bg-gradient-to-r from-zinc-800 to-zinc-900 border-2 border-yellow-400 rounded-2xl p-8 shadow-2xl shadow-yellow-400/20">
+            <div className="inline-block bg-white border-2 border-yellow-400 rounded-2xl p-8 shadow-xl shadow-yellow-300/30">
               <div className="flex items-center justify-center gap-4 mb-4">
-                <div className="w-16 h-16 bg-gradient-to-br from-yellow-400 to-yellow-600 rounded-full flex items-center justify-center text-3xl">
+                <div className="w-16 h-16 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-full flex items-center justify-center text-3xl shadow-lg">
                   ✓
                 </div>
                 <div className="text-left">
-                  <h3 className="text-2xl md:text-3xl font-bold text-white">
+                  <h3 className="text-2xl md:text-3xl font-bold text-gray-900">
                     Kualitas Terjamin
                   </h3>
-                  <p className="text-yellow-400 font-semibold">
+                  <p className="text-yellow-600 font-semibold">
                     Material Premium & Konstruksi Profesional
                   </p>
                 </div>
               </div>
               <div className="flex flex-wrap justify-center gap-4 mt-6">
-                <div className="bg-zinc-700/50 px-6 py-3 rounded-lg">
-                  <p className="text-sm text-gray-400">Garansi Struktur</p>
-                  <p className="text-white font-bold">5 Tahun</p>
+                <div className="bg-orange-50 border border-yellow-300 px-6 py-3 rounded-lg">
+                  <p className="text-sm text-gray-600">Garansi Struktur</p>
+                  <p className="text-gray-900 font-bold">5 Tahun</p>
                 </div>
-                <div className="bg-zinc-700/50 px-6 py-3 rounded-lg">
-                  <p className="text-sm text-gray-400">Sertifikat</p>
-                  <p className="text-white font-bold">SHM & IMB</p>
+                <div className="bg-orange-50 border border-yellow-300 px-6 py-3 rounded-lg">
+                  <p className="text-sm text-gray-600">Sertifikat</p>
+                  <p className="text-gray-900 font-bold">SHM & IMB</p>
                 </div>
-                <div className="bg-zinc-700/50 px-6 py-3 rounded-lg">
-                  <p className="text-sm text-gray-400">Developer</p>
-                  <p className="text-white font-bold">Terpercaya</p>
+                <div className="bg-orange-50 border border-yellow-300 px-6 py-3 rounded-lg">
+                  <p className="text-sm text-gray-600">Developer</p>
+                  <p className="text-gray-900 font-bold">Terpercaya</p>
                 </div>
               </div>
             </div>

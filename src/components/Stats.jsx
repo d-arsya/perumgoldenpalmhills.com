@@ -54,8 +54,8 @@ const Stats = () => {
         }
       },
       {
-        threshold: 0.1, // Lebih rendah untuk mobile
-        rootMargin: "0px 0px -50px 0px", // Trigger lebih awal
+        threshold: 0.1,
+        rootMargin: "0px 0px -50px 0px",
       }
     );
 
@@ -109,7 +109,7 @@ const Stats = () => {
   return (
     <section
       ref={sectionRef}
-      className="py-20 bg-zinc-900 relative overflow-hidden"
+      className="py-20 bg-gradient-to-br from-orange-50 to-amber-50 relative overflow-hidden"
     >
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-5">
@@ -127,11 +127,11 @@ const Stats = () => {
         {/* Section Header */}
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
-            <span className="text-white">Bukti</span>
+            <span className="text-gray-900">Bukti</span>
             <span className="gold-text"> Kepercayaan</span>
           </h2>
           <div className="w-24 h-1 bg-gradient-to-r from-yellow-400 to-yellow-600 mx-auto mb-6"></div>
-          <p className="text-xl text-gray-400 max-w-2xl mx-auto">
+          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
             Ratusan keluarga Indonesia telah mempercayakan impian rumah mereka
             kepada kami
           </p>
@@ -144,25 +144,25 @@ const Stats = () => {
             return (
               <div
                 key={index}
-                className="group relative bg-gradient-to-br from-zinc-800 to-zinc-900 border border-yellow-400/30 rounded-2xl p-8 hover:border-yellow-400 transition-all duration-300 hover:transform hover:-translate-y-2 hover:shadow-2xl hover:shadow-yellow-400/20"
+                className="group relative bg-white border-2 border-yellow-200 rounded-2xl p-8 hover:border-yellow-400 transition-all duration-300 hover:transform hover:-translate-y-2 hover:shadow-xl hover:shadow-yellow-300/30"
               >
                 {/* Icon with Gradient */}
                 <div
-                  className={`w-16 h-16 bg-gradient-to-br ${stat.color} rounded-2xl flex items-center justify-center mb-6 text-3xl mx-auto transform group-hover:scale-110 group-hover:rotate-12 transition-all duration-300`}
+                  className={`w-16 h-16 bg-gradient-to-br ${stat.color} rounded-2xl flex items-center justify-center mb-6 text-3xl mx-auto transform group-hover:scale-110 group-hover:rotate-12 transition-all duration-300 shadow-lg`}
                 >
                   {stat.icon}
                 </div>
 
                 {/* Count */}
                 <div className="text-center mb-4">
-                  <h3 className="text-5xl md:text-6xl font-bold text-white mb-2">
+                  <h3 className="text-5xl md:text-6xl font-bold text-gray-900 mb-2">
                     {counts[countKey]}
-                    <span className="text-yellow-400">{stat.suffix}</span>
+                    <span className="text-yellow-600">{stat.suffix}</span>
                   </h3>
-                  <p className="text-xl font-semibold text-yellow-400 mb-2">
+                  <p className="text-xl font-semibold text-yellow-600 mb-2">
                     {stat.label}
                   </p>
-                  <p className="text-sm text-gray-400">{stat.description}</p>
+                  <p className="text-sm text-gray-600">{stat.description}</p>
                 </div>
 
                 {/* Decorative Line */}
@@ -174,22 +174,24 @@ const Stats = () => {
 
         {/* Trust Indicators */}
         <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
-          <div className="bg-zinc-800/50 border border-yellow-400/20 rounded-xl p-6 text-center hover:border-yellow-400 transition-all duration-300">
+          <div className="bg-white border-2 border-yellow-200 rounded-xl p-6 text-center hover:border-yellow-400 hover:shadow-lg transition-all duration-300">
             <div className="text-4xl mb-3">🏆</div>
-            <h4 className="text-white font-bold mb-2">Developer Terpercaya</h4>
-            <p className="text-gray-400 text-sm">
+            <h4 className="text-gray-900 font-bold mb-2">
+              Developer Terpercaya
+            </h4>
+            <p className="text-gray-600 text-sm">
               PT Aulia Cahya Anugerah Abadi
             </p>
           </div>
-          <div className="bg-zinc-800/50 border border-yellow-400/20 rounded-xl p-6 text-center hover:border-yellow-400 transition-all duration-300">
+          <div className="bg-white border-2 border-yellow-200 rounded-xl p-6 text-center hover:border-yellow-400 hover:shadow-lg transition-all duration-300">
             <div className="text-4xl mb-3">📜</div>
-            <h4 className="text-white font-bold mb-2">Legalitas Lengkap</h4>
-            <p className="text-gray-400 text-sm">SHM & IMB tersedia</p>
+            <h4 className="text-gray-900 font-bold mb-2">Legalitas Lengkap</h4>
+            <p className="text-gray-600 text-sm">SHM & IMB tersedia</p>
           </div>
-          <div className="bg-zinc-800/50 border border-yellow-400/20 rounded-xl p-6 text-center hover:border-yellow-400 transition-all duration-300">
+          <div className="bg-white border-2 border-yellow-200 rounded-xl p-6 text-center hover:border-yellow-400 hover:shadow-lg transition-all duration-300">
             <div className="text-4xl mb-3">💎</div>
-            <h4 className="text-white font-bold mb-2">Kualitas Premium</h4>
-            <p className="text-gray-400 text-sm">
+            <h4 className="text-gray-900 font-bold mb-2">Kualitas Premium</h4>
+            <p className="text-gray-600 text-sm">
               Material & konstruksi terbaik
             </p>
           </div>
@@ -197,11 +199,11 @@ const Stats = () => {
 
         {/* CTA Banner */}
         <div className="mt-16 text-center">
-          <div className="inline-block bg-gradient-to-r from-yellow-400/10 to-yellow-600/10 border-2 border-yellow-400 rounded-2xl p-8 shadow-2xl shadow-yellow-400/20">
-            <h3 className="text-3xl md:text-4xl font-bold text-white mb-4">
+          <div className="inline-block bg-white border-2 border-yellow-400 rounded-2xl p-8 shadow-xl shadow-yellow-300/30">
+            <h3 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
               Bergabunglah dengan Ratusan Keluarga Bahagia!
             </h3>
-            <p className="text-xl text-gray-300 mb-6">
+            <p className="text-xl text-gray-700 mb-6">
               Jangan lewatkan kesempatan emas memiliki rumah impian
             </p>
             <a

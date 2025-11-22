@@ -1,7 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 const HouseTypes = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [isAutoPlaying, setIsAutoPlaying] = useState(true);
+  const [direction, setDirection] = useState("next");
 
   const houseTypes = [
     {
@@ -67,14 +69,31 @@ const HouseTypes = () => {
     },
   ];
 
+  useEffect(() => {
+    if (isAutoPlaying) {
+      const interval = setInterval(() => {
+        nextSlide();
+      }, 5000);
+      return () => clearInterval(interval);
+    }
+  }, [currentSlide, isAutoPlaying]);
+
   const nextSlide = () => {
+    setDirection("next");
     setCurrentSlide((prev) => (prev + 1) % houseTypes.length);
   };
 
   const prevSlide = () => {
+    setDirection("prev");
     setCurrentSlide(
       (prev) => (prev - 1 + houseTypes.length) % houseTypes.length
     );
+  };
+
+  const goToSlide = (index) => {
+    setDirection(index > currentSlide ? "next" : "prev");
+    setCurrentSlide(index);
+    setIsAutoPlaying(false);
   };
 
   const whatsappNumber = "6281220353502";
@@ -86,16 +105,23 @@ const HouseTypes = () => {
   };
 
   return (
-    <section id="house-types" className="py-20 bg-zinc-900">
-      <div className="container mx-auto px-6">
+    <section
+      id="house-types"
+      className="py-20 bg-gradient-to-br from-orange-50 to-amber-50 relative overflow-hidden"
+    >
+      {/* Animated Background */}
+      <div className="absolute top-0 left-0 w-96 h-96 bg-yellow-200 rounded-full mix-blend-multiply filter blur-3xl opacity-10 animate-pulse-slow"></div>
+      <div className="absolute bottom-0 right-0 w-96 h-96 bg-orange-200 rounded-full mix-blend-multiply filter blur-3xl opacity-10 animate-pulse-slow animation-delay-2000"></div>
+
+      <div className="container mx-auto px-6 relative z-10">
         {/* Section Header */}
-        <div className="text-center mb-16">
+        <div className="text-center mb-16 animate-fade-in-up">
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
-            <span className="text-white">Pilih</span>
+            <span className="text-gray-900">Pilih</span>
             <span className="gold-text"> Tipe Anda</span>
           </h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-yellow-400 to-yellow-600 mx-auto mb-6"></div>
-          <p className="text-xl text-gray-400 max-w-2xl mx-auto">
+          <div className="w-24 h-1 bg-gradient-to-r from-yellow-400 to-yellow-600 mx-auto mb-6 animate-scale-x"></div>
+          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
             Berbagai pilihan tipe rumah yang disesuaikan dengan kebutuhan dan
             budget keluarga Anda
           </p>
@@ -106,66 +132,68 @@ const HouseTypes = () => {
           {/* Main Slide */}
           <div className="overflow-hidden rounded-3xl">
             <div
-              className="flex transition-transform duration-500 ease-out"
+              className="flex transition-transform duration-700 ease-out"
               style={{ transform: `translateX(-${currentSlide * 100}%)` }}
             >
               {houseTypes.map((house, index) => (
                 <div key={index} className="w-full flex-shrink-0">
-                  <div className="bg-gradient-to-br from-zinc-800 to-zinc-900 border border-yellow-400/30 rounded-3xl overflow-hidden">
+                  <div className="bg-white border-2 border-yellow-300 rounded-3xl overflow-hidden shadow-xl transform hover:scale-[1.02] transition-transform duration-500">
                     <div className="grid md:grid-cols-2 gap-0">
                       {/* Image Side */}
-                      <div className="relative h-96 md:h-auto">
+                      <div className="relative h-96 md:h-auto overflow-hidden group">
                         <img
                           src={house.image}
                           alt={house.type}
-                          className="w-full h-full object-cover"
+                          className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700"
                         />
                         {/* Highlight Badge */}
-                        <div className="absolute top-6 left-6 bg-gradient-to-r from-yellow-400 to-yellow-600 text-black px-6 py-2 rounded-full font-bold text-sm shadow-lg">
+                        <div className="absolute top-6 left-6 bg-gradient-to-r from-yellow-400 to-orange-500 text-white px-6 py-2 rounded-full font-bold text-sm shadow-lg animate-slide-in-left">
                           {house.highlight}
                         </div>
+                        {/* Overlay effect */}
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                       </div>
 
                       {/* Content Side */}
-                      <div className="p-8 md:p-12 flex flex-col justify-between">
+                      <div className="p-8 md:p-12 flex flex-col justify-between bg-gradient-to-br from-white to-orange-50">
                         {/* Type Badge */}
                         <div>
-                          <div className="inline-block bg-yellow-400/20 border border-yellow-400 text-yellow-400 px-4 py-2 rounded-lg text-sm font-semibold mb-4">
+                          <div className="inline-block bg-yellow-100 border-2 border-yellow-400 text-yellow-700 px-4 py-2 rounded-lg text-sm font-semibold mb-4 animate-slide-in-right">
                             {house.type}
                           </div>
 
-                          <h3 className="text-3xl md:text-4xl font-bold text-white mb-4">
+                          <h3 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4 animate-fade-in">
                             {house.title}
                           </h3>
 
-                          <p className="text-gray-400 text-lg mb-6 leading-relaxed">
+                          <p className="text-gray-600 text-lg mb-6 leading-relaxed animate-fade-in animation-delay-200">
                             {house.description}
                           </p>
 
                           {/* Luas */}
                           <div className="flex gap-6 mb-6">
-                            <div className="flex items-center gap-2">
-                              <div className="w-10 h-10 bg-yellow-400/20 rounded-lg flex items-center justify-center">
-                                <span className="text-yellow-400">📐</span>
+                            <div className="flex items-center gap-2 animate-slide-in-left animation-delay-300">
+                              <div className="w-10 h-10 bg-yellow-100 rounded-lg flex items-center justify-center border border-yellow-300 transform hover:rotate-12 transition-transform duration-300">
+                                <span className="text-yellow-600">📐</span>
                               </div>
                               <div>
                                 <p className="text-xs text-gray-500">
                                   Luas Tanah
                                 </p>
-                                <p className="text-white font-bold">
+                                <p className="text-gray-900 font-bold">
                                   {house.luas.tanah}
                                 </p>
                               </div>
                             </div>
-                            <div className="flex items-center gap-2">
-                              <div className="w-10 h-10 bg-yellow-400/20 rounded-lg flex items-center justify-center">
-                                <span className="text-yellow-400">🏠</span>
+                            <div className="flex items-center gap-2 animate-slide-in-left animation-delay-400">
+                              <div className="w-10 h-10 bg-yellow-100 rounded-lg flex items-center justify-center border border-yellow-300 transform hover:rotate-12 transition-transform duration-300">
+                                <span className="text-yellow-600">🏠</span>
                               </div>
                               <div>
                                 <p className="text-xs text-gray-500">
                                   Luas Bangunan
                                 </p>
-                                <p className="text-white font-bold">
+                                <p className="text-gray-900 font-bold">
                                   {house.luas.bangunan}
                                 </p>
                               </div>
@@ -174,17 +202,20 @@ const HouseTypes = () => {
 
                           {/* Features */}
                           <div className="mb-8">
-                            <h4 className="text-yellow-400 font-semibold mb-3">
+                            <h4 className="text-yellow-600 font-semibold mb-3">
                               Fasilitas:
                             </h4>
                             <div className="grid grid-cols-2 gap-3">
                               {house.features.map((feature, idx) => (
                                 <div
                                   key={idx}
-                                  className="flex items-center gap-2"
+                                  className="flex items-center gap-2 animate-fade-in"
+                                  style={{
+                                    animationDelay: `${0.5 + idx * 0.1}s`,
+                                  }}
                                 >
                                   <svg
-                                    className="w-5 h-5 text-yellow-400 flex-shrink-0"
+                                    className="w-5 h-5 text-yellow-600 flex-shrink-0"
                                     fill="currentColor"
                                     viewBox="0 0 20 20"
                                   >
@@ -194,7 +225,7 @@ const HouseTypes = () => {
                                       clipRule="evenodd"
                                     />
                                   </svg>
-                                  <span className="text-gray-300 text-sm">
+                                  <span className="text-gray-700 text-sm">
                                     {feature}
                                   </span>
                                 </div>
@@ -208,7 +239,7 @@ const HouseTypes = () => {
                           href={getWhatsappLink(house.type)}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="btn-gold w-full text-center text-lg flex items-center justify-center gap-2"
+                          className="btn-gold w-full text-center text-lg flex items-center justify-center gap-2 transform hover:scale-105 transition-transform duration-300 animate-fade-in animation-delay-1000"
                         >
                           <svg
                             className="w-5 h-5"
@@ -230,7 +261,7 @@ const HouseTypes = () => {
           {/* Navigation Arrows */}
           <button
             onClick={prevSlide}
-            className="absolute left-4 top-1/2 -translate-y-1/2 bg-black/80 hover:bg-yellow-400 text-white hover:text-black w-12 h-12 rounded-full flex items-center justify-center transition-all duration-300 shadow-lg z-10"
+            className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-yellow-400 text-gray-900 hover:text-white w-12 h-12 rounded-full flex items-center justify-center transition-all duration-300 shadow-lg border-2 border-yellow-300 z-10 transform hover:scale-110"
             aria-label="Previous slide"
           >
             <svg
@@ -249,7 +280,7 @@ const HouseTypes = () => {
           </button>
           <button
             onClick={nextSlide}
-            className="absolute right-4 top-1/2 -translate-y-1/2 bg-black/80 hover:bg-yellow-400 text-white hover:text-black w-12 h-12 rounded-full flex items-center justify-center transition-all duration-300 shadow-lg z-10"
+            className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-yellow-400 text-gray-900 hover:text-white w-12 h-12 rounded-full flex items-center justify-center transition-all duration-300 shadow-lg border-2 border-yellow-300 z-10 transform hover:scale-110"
             aria-label="Next slide"
           >
             <svg
@@ -272,11 +303,11 @@ const HouseTypes = () => {
             {houseTypes.map((_, index) => (
               <button
                 key={index}
-                onClick={() => setCurrentSlide(index)}
-                className={`transition-all duration-300 rounded-full ${
+                onClick={() => goToSlide(index)}
+                className={`transition-all duration-500 rounded-full transform hover:scale-110 ${
                   currentSlide === index
-                    ? "w-12 h-3 bg-gradient-to-r from-yellow-400 to-yellow-600"
-                    : "w-3 h-3 bg-gray-600 hover:bg-gray-500"
+                    ? "w-12 h-3 bg-gradient-to-r from-yellow-400 to-orange-500 shadow-lg"
+                    : "w-3 h-3 bg-gray-300 hover:bg-gray-400"
                 }`}
                 aria-label={`Go to slide ${index + 1}`}
               />
@@ -289,11 +320,11 @@ const HouseTypes = () => {
           {houseTypes.map((house, index) => (
             <button
               key={index}
-              onClick={() => setCurrentSlide(index)}
-              className={`px-6 py-3 rounded-lg font-semibold transition-all duration-300 ${
+              onClick={() => goToSlide(index)}
+              className={`px-6 py-3 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105 ${
                 currentSlide === index
-                  ? "bg-gradient-to-r from-yellow-400 to-yellow-600 text-black shadow-lg"
-                  : "bg-zinc-800 text-gray-300 border border-yellow-400/30 hover:border-yellow-400"
+                  ? "bg-gradient-to-r from-yellow-400 to-orange-500 text-white shadow-lg"
+                  : "bg-white text-gray-700 border-2 border-yellow-300 hover:border-yellow-400 hover:shadow-md"
               }`}
             >
               {house.type}
@@ -301,6 +332,108 @@ const HouseTypes = () => {
           ))}
         </div>
       </div>
+
+      <style jsx>{`
+        @keyframes pulse-slow {
+          0%,
+          100% {
+            opacity: 0.1;
+            transform: scale(1);
+          }
+          50% {
+            opacity: 0.2;
+            transform: scale(1.05);
+          }
+        }
+
+        @keyframes scale-x {
+          from {
+            transform: scaleX(0);
+          }
+          to {
+            transform: scaleX(1);
+          }
+        }
+
+        @keyframes fade-in-up {
+          from {
+            opacity: 0;
+            transform: translateY(30px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+
+        @keyframes fade-in {
+          from {
+            opacity: 0;
+          }
+          to {
+            opacity: 1;
+          }
+        }
+
+        @keyframes slide-in-left {
+          from {
+            opacity: 0;
+            transform: translateX(-30px);
+          }
+          to {
+            opacity: 1;
+            transform: translateX(0);
+          }
+        }
+
+        @keyframes slide-in-right {
+          from {
+            opacity: 0;
+            transform: translateX(30px);
+          }
+          to {
+            opacity: 1;
+            transform: translateX(0);
+          }
+        }
+
+        .animate-pulse-slow {
+          animation: pulse-slow 4s ease-in-out infinite;
+        }
+        .animate-scale-x {
+          animation: scale-x 1s ease-out forwards;
+          transform-origin: left;
+        }
+        .animate-fade-in-up {
+          animation: fade-in-up 0.8s ease-out forwards;
+        }
+        .animate-fade-in {
+          animation: fade-in 0.6s ease-out forwards;
+          opacity: 0;
+        }
+        .animate-slide-in-left {
+          animation: slide-in-left 0.6s ease-out forwards;
+        }
+        .animate-slide-in-right {
+          animation: slide-in-right 0.6s ease-out forwards;
+        }
+
+        .animation-delay-200 {
+          animation-delay: 0.2s;
+        }
+        .animation-delay-300 {
+          animation-delay: 0.3s;
+        }
+        .animation-delay-400 {
+          animation-delay: 0.4s;
+        }
+        .animation-delay-1000 {
+          animation-delay: 1s;
+        }
+        .animation-delay-2000 {
+          animation-delay: 2s;
+        }
+      `}</style>
     </section>
   );
 };
